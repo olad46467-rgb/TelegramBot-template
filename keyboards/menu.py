@@ -1,11 +1,13 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from config import CHANNEL_USERNAME
+
 join_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="📢 Join TradeLearn Hub",
-                url="https://t.me/tradelearnhub12"
+                text="📢 Join Channel",
+                url=f"https://t.me/{CHANNEL_USERNAME.replace('@', '')}"
             )
         ],
         [
