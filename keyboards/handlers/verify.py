@@ -2,7 +2,7 @@ from aiogram import Router
 from aiogram.types import CallbackQuery
 from aiogram.exceptions import TelegramBadRequest
 
-from config import CHANNEL_USERNAME
+from config import CHANNEL_USERNAME, BOT_NAME
 
 router = Router()
 
@@ -20,9 +20,10 @@ async def verify(callback: CallbackQuery):
 
         if member.status in ("member", "administrator", "creator"):
 
-            await callback.message.edit_text(
-                "✅ Verification Successful!\n\n"
-                "Welcome!"
+            await callback.message.answer(
+                f"🎉 Verification Successful!\n\n"
+                f"Welcome to {BOT_NAME}!\n\n"
+                "You now have full access."
             )
 
         else:
@@ -35,6 +36,6 @@ async def verify(callback: CallbackQuery):
     except TelegramBadRequest:
 
         await callback.answer(
-            "Unable to verify membership.",
+            "⚠️ Unable to verify membership.",
             show_alert=True
         )
