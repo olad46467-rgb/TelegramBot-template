@@ -6,9 +6,13 @@ from aiogram.types import Message
 
 from config import BOT_TOKEN, WELCOME_MESSAGE
 from keyboards.menu import join_keyboard
+from handlers.verify import router as verify_router
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
+
+# Register the Verify handler
+dp.include_router(verify_router)
 
 
 @dp.message(Command("start"))
